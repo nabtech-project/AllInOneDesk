@@ -1,0 +1,4 @@
+[build]
+buildCommand = "mvn clean install"
+startCommand = "java -jar target/*.jar"
+rootDirectory = "backend"
