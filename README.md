@@ -28,4 +28,17 @@ A full-stack task management application with a Spring Boot backend and Angular 
 
    ```bash
    cd backend
+   
+2. Build and run the Spring Boot app:
+   ./mvnw spring-boot:run
+
+3. The backend API will be available at:
+   http://localhost:8081/api/tasks
+
+### Frontend
+1. Navigate to the frontend folder:
+   cd frontend
+   npm install
+   ng serve
+
 
