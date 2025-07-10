@@ -1,0 +1,90 @@
+.login-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-card {
+    background: #ffffff;
+    padding: 2.5rem 3rem;
+    border-radius: 12px;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+    width: 360px;
+    text-align: center;
+}
+
+.header {
+    margin-bottom: 2rem;
+    font-weight: 700;
+    font-size: 2.2rem;
+    color: #4e54c8;
+}
+
+.login-form {
+    .form-group {
+        margin-bottom: 1.5rem;
+        text-align: left;
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #444;
+        }
+
+        .input-icon {
+            display: flex;
+            align-items: center;
+            border: 1.5px solid #ccc;
+            border-radius: 6px;
+            padding: 0.4rem 0.75rem;
+            background: #f9f9f9;
+            transition: border-color 0.3s ease;
+
+            span {
+                font-size: 1.2rem;
+                margin-right: 0.75rem;
+                color: #888;
+            }
+
+            input {
+                border: none;
+                outline: none;
+                flex-grow: 1;
+                font-size: 1rem;
+                background: transparent;
+                padding: 0.5rem 0;
+            }
+        }
+
+        .input-icon:focus-within {
+            border-color: #4e54c8;
+            background: #eef0ff;
+        }
+    }
+
+    .btn-submit {
+        width: 100%;
+        background-color: #4e54c8;
+        border: none;
+        padding: 0.75rem;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:disabled {
+            background-color: #9999cc;
+            cursor: not-allowed;
+        }
+
+        &:not(:disabled):hover {
+            background-color: #3b3f9c;
+        }
+    }
+}

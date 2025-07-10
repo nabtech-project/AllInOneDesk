@@ -1,0 +1,62 @@
+<div class="note-wrapper">
+    <div class="header">
+        <button class="back-btn" (click)="goBack()">←</button>
+        <h2>Notes</h2>
+        <button class="add-btn" (click)="openFormForNew()">+ Add New</button>
+    </div>
+
+    <div class="tabs">
+        <button [class.active]="view === 'table'" (click)="view = 'table'">Table View</button>
+        <button [class.active]="view === 'grid'" (click)="view = 'grid'">Grid View</button>
+    </div>
+
+    <table class="note-table" *ngIf="view === 'table'">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Created At</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let note of notes">
+                <td>{{ note.title }}</td>
+                <td>{{ note.content }}</td>
+                <td>{{ note.createdAt | date: 'short' }}</td>
+                <td>
+                    <button class="update-btn" (click)="openFormForEdit(note)">Update</button>
+                    <button class="delete-btn" (click)="deleteNote(note.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="note-grid" *ngIf="view === 'grid'">
+        <div class="note-card" *ngFor="let note of notes">
+            <h3>{{ note.title }}</h3>
+            <p>{{ note.content }}</p>
+            <small>Created: {{ note.createdAt | date: 'short' }}</small>
+            <div class="btn-group">
+                <button class="update-btn" (click)="openFormForEdit(note)">Update</button>
+                <button class="delete-btn" (click)="deleteNote(note.id)">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="dialog-backdrop" *ngIf="showForm">
+        <div class="dialog">
+            <h3>{{ editMode ? 'Update Note' : 'Add New Note' }}</h3>
+            <form (ngSubmit)="saveNote()">
+                <input type="text" placeholder="Title" [(ngModel)]="currentNote.title" name="title" required />
+                <textarea placeholder="Content" [(ngModel)]="currentNote.content" name="content" rows="5"
+                    required></textarea>
+                <input type="datetime-local" [(ngModel)]="currentNote.createdAtLocal" name="createdAtLocal" required />
+                <div class="dialog-actions">
+                    <button type="submit">{{ editMode ? 'Update' : 'Save' }}</button>
+                    <button type="button" (click)="closeForm()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

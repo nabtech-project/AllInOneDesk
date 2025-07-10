@@ -1,0 +1,34 @@
+<div class="dashboard-wrapper">
+    <h1 class="header">All In One Desk</h1>
+
+    <div class="settings-wrapper">
+        <div class="settings-icon" (click)="toggleSettings()">
+            ⚙️
+        </div>
+        <div class="settings-dropdown" *ngIf="showSettings">
+            <button (click)="logout()">Logout</button>
+        </div>
+    </div>
+
+    <div class="dashboard-grid">
+        <div class="card" (click)="navigateTo('contact')">
+            <div class="icon">📇</div>
+            <div class="label">Contact</div>
+        </div>
+
+        <div class="card" (click)="navigateTo('note')">
+            <div class="icon">📝</div>
+            <div class="label">Note</div>
+        </div>
+
+        <div class="card" (click)="navigateTo('task')">
+            <div class="icon">✅</div>
+            <div class="label">Task</div>
+        </div>
+
+        <div class="card" (click)="navigateTo('event')">
+            <div class="icon">📅</div>
+            <div class="label">Event</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="contact-wrapper">
+    <div class="header">
+        <button class="back-btn" (click)="goBack()">←</button>
+        <h2>Contact</h2>
+        <button class="add-btn" (click)="openFormForNew()">+ Add New</button>
+    </div>
+
+    <div class="tabs">
+        <button [class.active]="view === 'table'" (click)="view = 'table'">Table View</button>
+        <button [class.active]="view === 'grid'" (click)="view = 'grid'">Grid View</button>
+    </div>
+
+    <table class="contact-table" *ngIf="view === 'table'">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let contact of contacts">
+                <td>{{ contact.name }}</td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.phone }}</td>
+                <td>
+                    <button class="update-btn" (click)="openFormForEdit(contact)">Update</button>
+                    <button class="delete-btn" (click)="deleteContact(contact.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="contact-grid" *ngIf="view === 'grid'">
+        <div class="contact-card" *ngFor="let contact of contacts">
+            <h3>{{ contact.name }}</h3>
+            <p>{{ contact.email }}</p>
+            <p>{{ contact.phone }}</p>
+            <div class="btn-group">
+                <button class="update-btn" (click)="openFormForEdit(contact)">Update</button>
+                <button class="delete-btn" (click)="deleteContact(contact.id)">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="dialog-backdrop" *ngIf="showForm">
+        <div class="dialog">
+            <h3>{{ editMode ? 'Update Contact' : 'Add New Contact' }}</h3>
+            <form (ngSubmit)="saveContact()">
+                <input type="text" placeholder="Name" [(ngModel)]="currentContact.name" name="name" required />
+                <input type="email" placeholder="Email" [(ngModel)]="currentContact.email" name="email" required />
+                <input type="text" placeholder="Phone" [(ngModel)]="currentContact.phone" name="phone" required />
+                <div class="dialog-actions">
+                    <button type="submit">{{ editMode ? 'Update' : 'Save' }}</button>
+                    <button type="button" (click)="closeForm()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
