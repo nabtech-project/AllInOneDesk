@@ -1,2 +1,31 @@
 # AllInOneDesk
-AllInOneDesk
+
+A full-stack task management application with a Spring Boot backend and Angular frontend.
+
+---
+
+## Project Structure
+
+- **backend/** — Spring Boot REST API
+- **frontend/** — Angular client application
+
+---
+
+## Prerequisites
+
+- Java 17+ (for backend)
+- Maven (for backend)
+- Node.js and npm (for frontend)
+- Angular CLI (`npm install -g @angular/cli`)
+
+---
+
+## Running Locally
+
+### Backend
+
+1. Navigate to the backend folder:
+
+   ```bash
+   cd backend
+
